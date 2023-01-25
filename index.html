@@ -1,10 +1,43 @@
 <html>
 <head>
 <link rel="stylesheet" href="test.css">
+<link rel="icon" type="image/png" href="icon.png">
+<title>slackテーマランダム生成</title>
 </head>
-
 <body>
-<button type=“button" class="btn" onclick="location.href='https://twitter.com/intent/follow?screen_name=kakothk'">見たら全員押せ</button>
-</body>
 
+  <header class="site-header">
+    <div class="wrapper site-header__wrapper">
+      <h2>slackテーマランダム生成</h2>
+    </div>
+  </header>
+
+  <form><input type="button"  class="btn" value="ランダムテーマ生成" onClick="altRan()"> <span id="rnd"></span></form>
+  <div id="collect"></div>
+
+  <script type="text/javascript">
+
+  var r = "";
+
+  function altRan() {
+  	r = "";
+
+    for (var i = 0; i < 10; i++) {
+      r +='#' +  Math.random().toString(16).slice(-6); //乱数の発生
+      if(i!=9)r +=',';
+    }
+  	document.getElementById("rnd").innerHTML = r; //値の出力
+
+    copyClipBoad();
+  }
+
+ function copyClipBoad(){
+   navigator.clipboard.writeText(r);
+   var spacer = " ";
+  document.getElementById("collect").innerText = "クリップボードにコピーしました";
+ }
+
+  </script>
+
+</body>
 </html>
